@@ -10,9 +10,9 @@ class PersonModel(QAbstractListModel):
     def __init__(self, parent=None):
         super().__init__(parent)
         self.persons = [
-            {'name': 'jon', 'number': '2084753'},
+            {'name': 'jon', 'number': '208475345'},
             {'name': 'jane', 'number': '247504375'},
-            {'name': 'mike', 'number': '24568095'},
+            {'name': 'mike', 'number': '245680955'},
         ]
 
     def data(self, index, role=Qt.DisplayRole):
