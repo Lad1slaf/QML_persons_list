@@ -10,9 +10,9 @@ class PersonModel(QAbstractListModel):
     def __init__(self, parent=None):
         super().__init__(parent)
         self.persons = [
-            {'name': 'jon', 'number': 2084753},
-            {'name': 'jane', 'number': 247504375},
-            {'name': 'mike', 'number': 24568095},
+            {'name': 'jon', 'number': '2084753'},
+            {'name': 'jane', 'number': '247504375'},
+            {'name': 'mike', 'number': '24568095'},
         ]
 
     def data(self, index, role=Qt.DisplayRole):
@@ -37,7 +37,7 @@ class PersonModel(QAbstractListModel):
         self.persons.append({'name': name, 'number': number})
         self.endInsertRows()
 
-    @pyqtSlot(int, str, int)
+    @pyqtSlot(int, str, str)
     def editPerson(self, row, name, number):
         ix = self.index(row, 0)
         self.persons[row] = {'name': name, 'number': number}
@@ -49,6 +49,19 @@ class PersonModel(QAbstractListModel):
         del self.persons[row]
         self.endRemoveRows()
 
+    @pyqtSlot(int, result=str)
+    def getName(self, row):
+        try:
+            return self.persons[row]['name']
+        except IndexError:
+            return None
+
+    @pyqtSlot(int, result=str)
+    def getNumber(self, row):
+        try:
+            return self.persons[row]['number']
+        except IndexError:
+            return None
     @pyqtSlot()
     def deleteAllPersons(self):
         self.beginRemoveRows(QModelIndex(), 0, self.rowCount())
