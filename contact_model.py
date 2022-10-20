@@ -62,6 +62,7 @@ class PersonModel(QAbstractListModel):
             return self.persons[row]['number']
         except IndexError:
             return None
+
     @pyqtSlot()
     def deleteAllPersons(self):
         self.beginRemoveRows(QModelIndex(), 0, self.rowCount())

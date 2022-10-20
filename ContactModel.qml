@@ -194,7 +194,7 @@ Rectangle {
 
             Timer {
                 id: timer
-                interval: 1000
+                interval: 1500
                 running: false
                 onTriggered: {
                     number_back.color = Qt.binding(function() { return text_number.activeFocus ? "green" : "grey" })
@@ -203,8 +203,6 @@ Rectangle {
             }
 
             onClicked: {
-
-                console.log("qml adding")
                 if (text_name.length < 2 || text_number.length < 8){
                     number_back.color = "red"
                     name_back.color = "red"
@@ -296,7 +294,7 @@ Rectangle {
 
             Timer {
                 id: edit_timer
-                interval: 1000
+                interval: 1500
                 running: false
                 onTriggered: {
                     edit_number_back.color = Qt.binding(function() { return edit_number.activeFocus ? "green" : "grey" })
